@@ -6,6 +6,7 @@ import AddExpenseForm from '../../component/Addexpenseform';
 import IncomeRecords from '../../component/showincome'; 
 import ExpenseRecords from '../../component/showexpense'; 
 import image from '../../images/imagebguser.avif';
+import HorizontalChart from '../../component/chart-horizontal';
 
 export default function Userpage() {
   const userEmail = localStorage.getItem('userEmail');
@@ -13,12 +14,14 @@ export default function Userpage() {
   const [showExpenseForm, setShowExpenseForm] = useState(false);
   const [showIncomeRecords, setShowIncomeRecords] = useState(false);
   const [showExpenseRecords, setShowExpenseRecords] = useState(false);
+  const [showchart , setshowchart ] = useState(false);
 
   const handleShowIncomeForm = () => {
     setShowIncomeForm(true);
     setShowExpenseForm(false);
     setShowIncomeRecords(false);
     setShowExpenseRecords(false);
+    setshowchart(false);
   };
 
   const handleShowExpenseForm = () => {
@@ -26,6 +29,7 @@ export default function Userpage() {
     setShowExpenseForm(true);
     setShowIncomeRecords(false);
     setShowExpenseRecords(false);
+    setshowchart(false);
   };
 
   const handleShowIncomeRecords = () => {
@@ -33,6 +37,7 @@ export default function Userpage() {
     setShowExpenseForm(false);
     setShowIncomeRecords(true);
     setShowExpenseRecords(false);
+    setshowchart(false);
   };
 
   const handleShowExpenseRecords = () => {
@@ -40,6 +45,15 @@ export default function Userpage() {
     setShowExpenseForm(false);
     setShowIncomeRecords(false);
     setShowExpenseRecords(true);
+    setshowchart(false);
+  };
+
+  const handlechart = () => {
+    setShowIncomeForm(false);
+    setShowExpenseForm(false);
+    setShowIncomeRecords(false);
+    setShowExpenseRecords(false);
+    setshowchart(true);
   };
 
   return (
@@ -79,6 +93,12 @@ export default function Userpage() {
             >
               Show Record of Expenses
             </button>
+            <button
+              className="bg-red text-white px-4 py-2 mb-4 rounded hover:bg-yellow"
+              onClick={handlechart}
+            >
+              Show chart
+            </button>
           </div>
           </div>
           </div>
@@ -87,6 +107,7 @@ export default function Userpage() {
           {showExpenseForm && <AddExpenseForm onClose={() => setShowExpenseForm(false)} />}
           {showIncomeRecords && <IncomeRecords />} {/* Create an IncomeRecords component */}
           {showExpenseRecords && <ExpenseRecords />} {/* Create an ExpenseRecords component */}
+          {showchart && <HorizontalChart/>}
         </div>
       ) : (
         <></>

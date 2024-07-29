@@ -4,9 +4,9 @@ import {BrowserRouter as Router , Route, Routes, Navigate} from "react-router-do
 // import react from 'react';
 
 import { useEffect, useState } from "react";
-import Login from "./Pages/Login/Login";
-import Register from "./Pages/Register/Register";
-import Userpage from "./Pages/Userpage/Userpage";
+import Login from "./pages/Login/Login";
+import Register from "./pages/Register/Register";
+import Userpage from "./pages/Userpage/Userpage";
 
 function App() { 
   const [ istopofpage , setistopofpage ] = useState(true);
